@@ -29,8 +29,11 @@ class Deck():
         """
         shuffle(self.cards)
 
-    def handing_out(self):
+    def hand_out(self):
         """
-        Handing out cards for players
+        Handing out card for players
         return
         """
+        top_card = self.cards.pop(0)
+        print(top_card)
+        return top_card

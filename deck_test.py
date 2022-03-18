@@ -15,3 +15,13 @@ def test_check_quantity_values_cards():
     for karta in all_cards:
         # print(karta)
         assert temp.count(karta) == 4
+
+
+def test_check_deck_length_after_hand_out_card():
+    #TODO
+    pass
+
+
+def test_check_top_card():
+    #TODO
+    pass
