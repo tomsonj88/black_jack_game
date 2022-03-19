@@ -14,7 +14,11 @@ talia.hand_out()
 print(talia.cards)
 
 gracz = Player("Tomson")
-print(gracz.take_cards(2))
+karty_gracza = gracz.take_cards(2)
+# print(gracz.take_cards(2))
+print(karty_gracza)
+punkty = gracz.count_points(karty_gracza)
+print(f"Twoje punkty to: {punkty}")
 
 
 

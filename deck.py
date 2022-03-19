@@ -2,7 +2,7 @@ from random import shuffle
 from card import Card
 
 
-class Deck():
+class Deck:
     """
     Deck class contains from 52 cards
     """
