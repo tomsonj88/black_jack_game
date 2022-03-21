@@ -34,6 +34,9 @@ class Deck:
         Handing out card for players
         return
         """
-        top_card = self.cards.pop(0)
-        print(top_card)
-        return top_card
+        try:
+            top_card = self.cards.pop(0)
+            return top_card
+        except IndexError:
+            return exit("Deck is empty. Game over!")
+

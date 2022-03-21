@@ -25,3 +25,8 @@ def test_check_deck_length_after_hand_out_card():
 def test_check_top_card():
     #TODO
     pass
+
+
+def test_check_if_deck_is_empty():
+    # TODO: consider to check here or in player test. first thought is that should will be done here
+    pass

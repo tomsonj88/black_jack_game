@@ -15,6 +15,8 @@ class Player:
         self.deck = Deck()
 
     def take_cards(self, quantity):
+        # TODO: quantity should be positive value
+        #  and not greater than 52 -> make exception throw
         cards = []
         self.deck.shuffle_deck()
         while quantity:
