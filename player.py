@@ -5,6 +5,10 @@ from deck import Deck
 from card import Card
 
 
+class InvalidCardQuantity(Exception):
+    """Exception if number of handing card is less than 0 or bigger than 52"""
+
+
 class Player:
     """"
     class Player
@@ -15,8 +19,8 @@ class Player:
         self.deck = Deck()
 
     def take_cards(self, quantity):
-        # TODO: quantity should be positive value
-        #  and not greater than 52 -> make exception throw
+        if quantity < 0 or quantity > 52:
+            raise InvalidCardQuantity("Invalid number of cards")
         cards = []
         self.deck.shuffle_deck()
         while quantity:
@@ -24,13 +28,11 @@ class Player:
             quantity -= 1
         return cards
 
-    def show_cards(self):
-        pass
-
     def stop(self):
         pass
 
-    def count_points(self, cards):
+    @staticmethod
+    def count_points(cards):
         point = 0
         point_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 10, "Q": 10,
                       "K": 10, "A": 1}
