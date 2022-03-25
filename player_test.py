@@ -1,9 +1,10 @@
 """
 Module to test Player module
 """
+from random import randint
 
 from player import Player
-from random import randint
+from card import Card
 
 
 def test_quantity_of_take_cards():
@@ -38,8 +39,16 @@ def test_higher_range_of_take_cards():
     assert len(cards) == card_quantity
 
 
-# def test_sum_of_taken_cards():
-#     pass
+def test_check_count_points():
+    player_greg = Player("Greg")
+    cards = [Card("2"), Card("K")]
+    assert player_greg.count_points(cards) == 12
+    cards = [Card("10"), Card("K"), Card("9")]
+    assert player_greg.count_points(cards) == 29
+    cards = [Card("3"), Card("7")]
+    assert player_greg.count_points(cards) == 10
+    cards = [Card("Q"), Card("J")]
+    assert player_greg.count_points(cards) == 20
 
-# def test_check_count_points():
-#     pass
+
+#test_check_count_points_with_As()us
