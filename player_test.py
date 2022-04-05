@@ -52,3 +52,4 @@ def test_check_count_points():
 
 
 #test_check_count_points_with_As()us
+#ToDo later - check if cards with As are correct counted

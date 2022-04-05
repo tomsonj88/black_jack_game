@@ -32,6 +32,8 @@ class Player:
             quantity -= 1
         return cards
 
+    def add_card(self):
+        self.cards.append(self.take_cards(1)[0])
 
     def turn_pass(self):
         print("PASS")
@@ -51,17 +53,14 @@ class Player:
                     point += point_dict[value]
         return point
 
+    def show_cards(self):
+        print(f"{self.name} cards: {self.cards}, points: {self.count_points()}")
+
 
 class Human(Player):
     def make_decision(self):
-        decision = input("Make decision: t - take another cards or p - pass")
-        if decision == "t":
-            self.cards.append(self.take_cards(1)[0])
-            print("dupa")
-        elif decision == "p":
-            self.turn_pass()
-        else:
-            print("bad choice")
+        decision = input("Make decision: c - take another cards or p - pass")
+        return decision.lower()
 
 
 class Dealer(Player):
