@@ -65,4 +65,8 @@ class Human(Player):
 
 class Dealer(Player):
     # ToDo: make here dealer game algorithm
-    pass
+    def dealer_game(self, oponnent_points):
+        while self.count_points() < oponnent_points:
+            self.add_card()     # ToDo jesli remis po 21, to krupier powinien PASS i jest remis
+            self.show_cards()
+
