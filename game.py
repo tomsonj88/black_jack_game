@@ -7,7 +7,7 @@ from deck import Deck
 from player import Player, Human, Dealer
 
 
-class Game():
+class Game:
     def __init__(self, player):
         self.player = Human(player)
         self.deck = Deck()
@@ -15,16 +15,12 @@ class Game():
 
     def player_turn(self):
         self.player.show_cards()
-        while True:
+        while self.player.count_points() <= 21:
             decision = self.player.make_decision()
             if decision == "c":
                 self.player.add_card()
-                # ToDo check points: if are greater than 21, turn ends
-                print(self.player)
-                points = self.player.count_points()
-                if points > 21:
-                    print("GAME OVER. Dealer wins.")
-                    sys.exit()  #ToDo change to exception
+                self.player.show_cards()
+                self.check_early_end_game()
             elif decision == "p":
                 print(f"{self.player.name} PASS")
                 break
@@ -34,4 +30,19 @@ class Game():
     def dealer_turn(self):
         self.dealer.show_cards()
         self.dealer.dealer_game(self.player.count_points())
-# ToDo who win or maybe it is draw
+
+    def who_is_winner(self):
+        dealer_points = self.dealer.count_points()
+        player_points = self.player.count_points()
+        if dealer_points <= 21 and dealer_points > player_points:
+            print(f"{self.dealer.name} wins !!!")
+        elif player_points <= 21 and player_points < dealer_points:
+            print(f"{self.player.name} wins !!!")
+        else:
+            print("It's draw")
+
+    def check_early_end_game(self):
+        player_points = self.player.count_points()
+        if player_points > 21:
+            print("GAME OVER. Dealer wins.")
+            sys.exit()  # ToDo change to exception

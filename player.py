@@ -43,6 +43,7 @@ class Player:
         point = 0
         point_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 10, "Q": 10,
                       "K": 10, "A": 1}
+        # ToDo: change points procedure for AS
         values = [str(element) for element in range(2, 11)]
         rest_values = ['J', 'Q', 'K', 'A']
         [values.append(element) for element in rest_values]
@@ -59,14 +60,15 @@ class Player:
 
 class Human(Player):
     def make_decision(self):
-        decision = input("Make decision: c - take another cards or p - pass")
+        decision = input(f"{self.name } make decision: c - take another cards or p - pass")
         return decision.lower()
 
 
 class Dealer(Player):
-    # ToDo: make here dealer game algorithm
-    def dealer_game(self, oponnent_points):
-        while self.count_points() < oponnent_points:
+    def dealer_game(self, opponent_points):
+        while self.count_points() < opponent_points and self.count_points() <= 21:
             self.add_card()     # ToDo jesli remis po 21, to krupier powinien PASS i jest remis
             self.show_cards()
+            if self.count_points() == 21:
+                break
 

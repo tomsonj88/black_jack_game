@@ -57,6 +57,7 @@ print("################## New game ##################")
 gra = Game("Adam")
 gra.player_turn()
 gra.dealer_turn()
+gra.who_is_winner()
 # krupier = Dealer("krupier")
 # krupier.dealer_turn()
 
