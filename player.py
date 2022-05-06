@@ -40,7 +40,7 @@ class Player:
     #     return "pass"
 
     def count_points(self):
-        point = 0
+        points = 0
         point_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8,
                       "9": 9, "10": 10, "J": 10, "Q": 10, "K": 10, "A": [1, 11]
                       }
@@ -56,17 +56,18 @@ class Player:
             for value in values:
                 if element == Card(value):
                     if element.value == "A":
-                        if point > 10:
-                            point += point_dict[value][0]
-                        elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
-                            point = 21
-                            return point
-                        else:
-                            point += point_dict[value][1]
+                        points = self.as_counting_points(points, point_dict, value)
+                        # if point > 10:
+                        #     point += point_dict[value][0]
+                        # elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
+                        #     point = 21
+                        #     return point
+                        # else:
+                        #     point += point_dict[value][1]
                     else:
-                        point += point_dict[value]
+                        points += point_dict[value]
                         break
-        return point
+        return points
 
                 # if element == Card(value):
                 #     if element.value == "A" and point > 10:
@@ -80,6 +81,16 @@ class Player:
                 #     else:
                 #         point += point_dict[value]
 
+    def as_counting_points(self, current_points, point_dict, card_value):
+        if current_points > 10:
+            current_points += point_dict[card_value][0]
+        elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
+            current_points = 21
+            return current_points
+        else:
+            current_points += point_dict[card_value][1]
+        return current_points
+
     def show_cards(self):
         print(f"{self.name} cards: {self.cards}, points: {self.count_points()}")
 
@@ -92,7 +103,7 @@ class Human(Player):
 
 class Dealer(Player):
     def dealer_game(self, opponent_points):
-        while self.count_points() < opponent_points and self.count_points() <= 21:
+        while self.count_points() <= opponent_points and self.count_points() <= 21:
             self.add_card()     # ToDo jesli remis po 21, to krupier powinien PASS i jest remis
             self.show_cards()
             if self.count_points() == 21:
