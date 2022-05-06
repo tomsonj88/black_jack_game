@@ -17,7 +17,7 @@ class Deck:
         """
         values = [str(element) for element in range(2, 11)]
         rest_values = ['J', 'Q', 'K', 'A']
-        [values.append(element) for element in rest_values]
+        values.extend(rest_values)
         values = values * 4
         cards = [Card(element) for element in values]
         return cards

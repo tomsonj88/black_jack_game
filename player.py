@@ -35,24 +35,50 @@ class Player:
     def add_card(self):
         self.cards.append(self.take_cards(1)[0])
 
-    def turn_pass(self):
-        print("PASS")
-        return "pass"
+    # def turn_pass(self):
+    #     print("PASS")
+    #     return "pass"
 
     def count_points(self):
         point = 0
-        point_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 10, "Q": 10,
-                      "K": 10, "A": 1}
+        point_dict = {"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8,
+                      "9": 9, "10": 10, "J": 10, "Q": 10, "K": 10, "A": [1, 11]
+                      }
         # ToDo: change points procedure for AS
+        # A + A = 21 -> black Jack
+        # A + 10 or J or Q or K -> 21
         values = [str(element) for element in range(2, 11)]
         rest_values = ['J', 'Q', 'K', 'A']
-        [values.append(element) for element in rest_values]
+        values.extend(rest_values)
 
+        # self.cards = [Card("A"), Card("A")]
         for element in self.cards:
             for value in values:
                 if element == Card(value):
-                    point += point_dict[value]
+                    if element.value == "A":
+                        if point > 10:
+                            point += point_dict[value][0]
+                        elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
+                            point = 21
+                            return point
+                        else:
+                            point += point_dict[value][1]
+                    else:
+                        point += point_dict[value]
+                        break
         return point
+
+                # if element == Card(value):
+                #     if element.value == "A" and point > 10:
+                #         point += point_dict[value][0]
+                #     elif element.value == "A":
+                #         point += point_dict[value][1]
+                #     # elif len(self.cards) == 2 and point == 11:
+                #     elif len(self.cards) == 2 and (self.cards[0] == self.cards[1] == "A"):
+                #         point = 21
+                #         return point
+                #     else:
+                #         point += point_dict[value]
 
     def show_cards(self):
         print(f"{self.name} cards: {self.cards}, points: {self.count_points()}")
