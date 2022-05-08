@@ -7,6 +7,10 @@ from deck import Deck
 from player import Player, Human, Dealer
 
 
+class GameOver(Exception):
+    pass
+
+
 class Game:
     def __init__(self, player):
         self.player = Human(player)
@@ -20,7 +24,11 @@ class Game:
             if decision == "c":
                 self.player.add_card()
                 self.player.show_cards()
-                self.check_early_end_game()
+                try:
+                    self.check_early_end_game()
+                except GameOver as exception:
+                    print(exception)
+                    sys.exit()
             elif decision == "p":
                 print(f"{self.player.name} PASS")
                 break
@@ -34,7 +42,8 @@ class Game:
     def who_is_winner(self):
         dealer_points = self.dealer.count_points()
         player_points = self.player.count_points()
-        if dealer_points <= 21 and dealer_points > player_points:
+        if 21 >= dealer_points > player_points:
+        # if dealer_points <= 21 and dealer_points > player_points:
             print(f"{self.dealer.name} wins !!!")
         elif player_points <= 21 and player_points < dealer_points:
             print(f"{self.player.name} wins !!!")
@@ -44,5 +53,6 @@ class Game:
     def check_early_end_game(self):
         player_points = self.player.count_points()
         if player_points > 21:
-            print("GAME OVER. Dealer wins.")
-            sys.exit()  # ToDo change to exception
+            raise GameOver("GAME OVER. Dealer wins.")
+            # print("GAME OVER. Dealer wins.")
+            # sys.exit()  # ToDo change to exception

@@ -53,42 +53,25 @@ class Player:
 
         # self.cards = [Card("A"), Card("A")]
         for element in self.cards:
+            # if element.value == "A":
+            #     points = self.as_counting_points(points, point_dict)
             for value in values:
                 if element == Card(value):
                     if element.value == "A":
-                        points = self.as_counting_points(points, point_dict, value)
-                        # if point > 10:
-                        #     point += point_dict[value][0]
-                        # elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
-                        #     point = 21
-                        #     return point
-                        # else:
-                        #     point += point_dict[value][1]
+                        points = self.as_counting_points(points, point_dict)
                     else:
                         points += point_dict[value]
                         break
         return points
 
-                # if element == Card(value):
-                #     if element.value == "A" and point > 10:
-                #         point += point_dict[value][0]
-                #     elif element.value == "A":
-                #         point += point_dict[value][1]
-                #     # elif len(self.cards) == 2 and point == 11:
-                #     elif len(self.cards) == 2 and (self.cards[0] == self.cards[1] == "A"):
-                #         point = 21
-                #         return point
-                #     else:
-                #         point += point_dict[value]
-
-    def as_counting_points(self, current_points, point_dict, card_value):
-        if current_points > 10:
-            current_points += point_dict[card_value][0]
+    def as_counting_points(self, current_points, point_dict):
+        if 10 < current_points < 21:
+            current_points += point_dict["A"][0]
         elif len(self.cards) == 2 and (self.cards[0] == self.cards[1]):
             current_points = 21
             return current_points
         else:
-            current_points += point_dict[card_value][1]
+            current_points += point_dict["A"][1]
         return current_points
 
     def show_cards(self):
