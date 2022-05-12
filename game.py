@@ -24,11 +24,11 @@ class Game:
             if decision == "c":
                 self.player.add_card()
                 self.player.show_cards()
-                try:
-                    self.check_early_end_game()
-                except GameOver as exception:
-                    print(exception)
-                    sys.exit()
+                # try:
+                #     self.check_early_end_game()
+                # except GameOver as exception:
+                #     print(exception)
+                #     sys.exit()
             elif decision == "p":
                 print(f"{self.player.name} PASS")
                 break
@@ -42,7 +42,8 @@ class Game:
     def who_is_winner(self):
         dealer_points = self.dealer.count_points()
         player_points = self.player.count_points()
-        if 21 >= dealer_points > player_points:
+#        if 21 >= dealer_points > player_points:
+        if player_points < dealer_points <= 21:
         # if dealer_points <= 21 and dealer_points > player_points:
             print(f"{self.dealer.name} wins !!!")
         elif player_points <= 21 and player_points < dealer_points:
