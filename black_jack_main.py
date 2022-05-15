@@ -27,10 +27,10 @@ from game import Game
 #     print(error_text)
 
 #################
-gra = Game("Adam")
-gra.player_turn()
-gra.dealer_turn()
-gra.who_is_winner(gra.dealer.count_points(), gra.player.count_points())
+game = Game("Adam")
+game.player_turn()
+game.dealer_turn()
+game.who_is_winner(game.dealer.count_points(), game.player.count_points())
 # krupier = Dealer("krupier")
 # krupier.dealer_turn()
 

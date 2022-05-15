@@ -47,7 +47,8 @@ def test_check_if_deck_is_empty():
     """
     Test checks if deck is empty after hand out 52 cards
     """
-    deck = Deck()  # cannot use global deck_of_cards, should be new object, because here is needed a new deck of cards
+    deck = Deck()  # cannot use global deck_of_cards, should be new object,
+                    # because here is needed a new deck of cards
     for _ in range(52):
         deck.hand_out()
     assert len(deck.cards) == 0

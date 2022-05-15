@@ -1,5 +1,5 @@
 """"
-
+Module contain Card class to create card object
 """
 
 

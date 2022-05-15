@@ -16,7 +16,7 @@ def test_quantity_of_take_cards():
     """
     player_stefan = Player("Stefan")
     the_highest = 50        # because two cards go to player, when object is initialized
-    for element in range(5):
+    for _ in range(5):
         card_quantity = randint(1, the_highest)
         cards = player_stefan.take_cards(card_quantity)
         assert len(cards) == card_quantity
@@ -54,7 +54,6 @@ def test_check_count_points():
 
 
 def test_check_count_points_with_as():
-    # ToDo later - check if cards with As are correct counted
     player = Player("Ignacy")
     player.cards = [Card("A"), Card("A")]
     assert player.count_points() == 21

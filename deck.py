@@ -1,3 +1,8 @@
+"""
+Module contain Deck class to create deck of cards to use in game
+"""
+
+import sys
 from random import shuffle
 from card import Card
 
@@ -38,5 +43,4 @@ class Deck:
             top_card = self.cards.pop(0)
             return top_card
         except IndexError:
-            return exit("Deck is empty. Game over!")
-
+            return sys.exit("Deck is empty. Game over!")

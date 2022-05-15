@@ -91,3 +91,9 @@ class Dealer(Player):
                 break
             self.add_card()
             self.show_cards()
+
+#     def show_cards(self):
+#         print(f"{self.name} cards: {self.cards}, points: {self.count_points()}")
+# #        for card in self.cards:
+#         if len(self.cards) == 2:
+#             print(f"{self.name} cards: {self.cards[0]}, X")
