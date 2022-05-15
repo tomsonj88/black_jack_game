@@ -86,9 +86,8 @@ class Human(Player):
 
 class Dealer(Player):
     def dealer_game(self, opponent_points):
-        while self.count_points() <= opponent_points and 17 >= self.count_points() <= 21: # ToDo check this change
-            self.add_card()     # ToDo jesli remis po 21, to krupier powinien PASS i jest remis
-            self.show_cards()
+        while (self.count_points() <= opponent_points <= 21) or (17 > self.count_points() <= 21):
             if self.count_points() == 21:
                 break
-
+            self.add_card()
+            self.show_cards()

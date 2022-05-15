@@ -39,17 +39,20 @@ class Game:
         self.dealer.show_cards()
         self.dealer.dealer_game(self.player.count_points())
 
-    def who_is_winner(self):
-        dealer_points = self.dealer.count_points()
-        player_points = self.player.count_points()
-#        if 21 >= dealer_points > player_points:
-        if player_points < dealer_points <= 21:
+    def who_is_winner(self, dealer_points, player_points):
+        # winner = {1: str(self.dealer.name), 2: str(self.player.name), 3: "draw"}
+        if dealer_points <= 21 and (dealer_points > player_points or player_points > 21):
         # if dealer_points <= 21 and dealer_points > player_points:
             print(f"{self.dealer.name} wins !!!")
-        elif player_points <= 21 and player_points < dealer_points:
+            # return 1
+        elif player_points <= 21 and (player_points > dealer_points or dealer_points > 21):
             print(f"{self.player.name} wins !!!")
+            # return 2
         else:
             print("It's draw")
+            # return 3
+    # ToDo: jak prawdzic tą sytuacja gdy oboje maja po 21
+
 
     def check_early_end_game(self):
         player_points = self.player.count_points()

@@ -30,7 +30,7 @@ from game import Game
 gra = Game("Adam")
 gra.player_turn()
 gra.dealer_turn()
-gra.who_is_winner()
+gra.who_is_winner(gra.dealer.count_points(), gra.player.count_points())
 # krupier = Dealer("krupier")
 # krupier.dealer_turn()
 
