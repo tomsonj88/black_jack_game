@@ -26,6 +26,10 @@ def test_quantity_of_take_cards():
 
 
 def test_lower_range_of_take_cards():
+    """
+    Test for checking take_cards method.
+    It takes 0 cards and check if quantity is good after taken 0 cards
+    """
     gracz_robin = Player("Robin")
     card_quantity = 0
     cards = gracz_robin.take_cards(card_quantity)
@@ -33,6 +37,10 @@ def test_lower_range_of_take_cards():
 
 
 def test_higher_range_of_take_cards():
+    """
+    Test for checking take_cards method. It takes 50 cards (because 2 cards has got player)
+    and check if quantity is good after taken 50 cards
+    """
     gracz_vanessa = Player("Vanessa")
     card_quantity = 50
     cards = gracz_vanessa.take_cards(card_quantity)
@@ -40,6 +48,10 @@ def test_higher_range_of_take_cards():
 
 
 def test_check_count_points():
+    """
+    Test for checking count_points method. Player took two cards and after this test checks
+    if points are correct counted
+    """
     player_greg = Player("Greg")
     player_greg.cards =[Card("2"), Card("K")]
     assert player_greg.count_points() == 12
@@ -49,11 +61,14 @@ def test_check_count_points():
     assert player_greg.count_points() == 10
     player_greg.cards = [Card("Q"), Card("J")]
     assert player_greg.count_points() == 20
-#     # cards = [Card("A"), Card("J")]
-#     # assert player_greg.count_points(cards) == 20
+    player_greg.cards = [Card("A"), Card("J")]
+    assert player_greg.count_points() == 21
 
 
 def test_check_count_points_with_as():
+    """
+    Test for checking count_points method with AS card. In all cases at least one card is AS
+    """
     player = Player("Ignacy")
     player.cards = [Card("A"), Card("A")]
     assert player.count_points() == 21

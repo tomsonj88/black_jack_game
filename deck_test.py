@@ -19,7 +19,7 @@ def test_check_quantity_values_cards():
     """
     Test checks if is correct quantity of cards from the same value
     """
-    temp = [str(karta) for karta in deck_of_cards.cards]
+    temp = [str(card) for card in deck_of_cards.cards]
     for card in ALL_CARDS:
         assert temp.count(card) == 4
 
