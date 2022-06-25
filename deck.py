@@ -23,8 +23,11 @@ class Deck:
         values = [str(element) for element in range(2, 11)]
         rest_values = ['J', 'Q', 'K', 'A']
         values.extend(rest_values)
-        values = values * 4
-        cards = [Card(element) for element in values]
+        cards = []
+        colors = ["c", "d", "h", "s"]
+        for value in values:
+            for color in colors:
+                cards.append(Card(value, color))
         return cards
 
     def shuffle_deck(self) -> None:

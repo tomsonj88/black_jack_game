@@ -60,7 +60,7 @@ class Player:
 
         for element in self.cards:
             for value in values:
-                if element == Card(value):
+                if element == Card(value, suit="a"):
                     if element.value == "A":
                         points = self.as_counting_points(points, point_dict)
                     else:
