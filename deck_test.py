@@ -20,8 +20,16 @@ def test_check_quantity_values_cards():
     Test checks if is correct quantity of cards from the same value
     """
     temp = [str(card) for card in deck_of_cards.cards]
+    print("temp")
+    print(temp)
+    print(deck_of_cards.cards)
+    counter = 0
     for card in ALL_CARDS:
-        assert temp.count(card) == 4
+        for element in temp:
+            if card in element:
+                counter += 1
+        assert counter == 4
+        counter = 0
 
 
 def test_check_deck_length_after_hand_out_card():
