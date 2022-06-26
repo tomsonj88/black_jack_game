@@ -1,10 +1,12 @@
 """
-Module to test Player module
+Module to test Player class
 """
 from random import randint
 
 from player import Player
 from card import Card
+
+suit = "c"
 
 
 def test_quantity_of_take_cards():
@@ -53,15 +55,15 @@ def test_check_count_points():
     if points are correct counted
     """
     player_greg = Player("Greg")
-    player_greg.cards =[Card("2"), Card("K")]
+    player_greg.cards =[Card("2", suit), Card("K", suit)]
     assert player_greg.count_points() == 12
-    player_greg.cards = [Card("10"), Card("K"), Card("9")]
+    player_greg.cards = [Card("10", suit), Card("K", suit), Card("9", suit)]
     assert player_greg.count_points() == 29
-    player_greg.cards = [Card("3"), Card("7")]
+    player_greg.cards = [Card("3", suit), Card("7", suit)]
     assert player_greg.count_points() == 10
-    player_greg.cards = [Card("Q"), Card("J")]
+    player_greg.cards = [Card("Q", suit), Card("J", suit)]
     assert player_greg.count_points() == 20
-    player_greg.cards = [Card("A"), Card("J")]
+    player_greg.cards = [Card("A", suit), Card("J", suit)]
     assert player_greg.count_points() == 21
 
 
@@ -70,19 +72,19 @@ def test_check_count_points_with_as():
     Test for checking count_points method with AS card. In all cases at least one card is AS
     """
     player = Player("Ignacy")
-    player.cards = [Card("A"), Card("A")]
+    player.cards = [Card("A", suit), Card("A", suit)]
     assert player.count_points() == 21
-    player.cards = [Card("K"), Card("A")]
+    player.cards = [Card("K", suit), Card("A", suit)]
     assert player.count_points() == 21
-    player.cards = [Card("2"), Card("A")]
+    player.cards = [Card("2", suit), Card("A", suit)]
     assert player.count_points() == 13
-    player.cards = [Card("10"), Card("A")]
+    player.cards = [Card("10", suit), Card("A", suit)]
     assert player.count_points() == 21
-    player.cards = [Card("A"), Card("J")]
+    player.cards = [Card("A", suit), Card("J", suit)]
     assert player.count_points() == 21
-    player.cards = [Card("6"), Card("A"), Card("3")]
+    player.cards = [Card("6", suit), Card("A", suit), Card("3", suit)]
     assert player.count_points() == 20
-    player.cards = [Card("A"), Card("4"), Card("3")]
+    player.cards = [Card("A", suit), Card("4", suit), Card("3", suit)]
     assert player.count_points() == 18
-    player.cards = [Card("6"), Card("J"), Card("A")]
+    player.cards = [Card("6", suit), Card("J", suit), Card("A", suit)]
     assert player.count_points() == 17
