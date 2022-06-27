@@ -3,17 +3,30 @@ Module contain Card class to create card object
 """
 
 
+class InvalidValue(Exception):
+    """Exception when wrong value card will be choosen"""
+
+
+class InvalidColor(Exception):
+    """Exception when wrong color card will be choosen"""
+
+
 class Card:
     """
     class Card describes card object
     ToDo: karta jako krotka: karta = (value, suit)
     """
 
-    POSSIBLE_VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-    POSSIBLE_COLORS = ["c", "d", "h", "s"]  # c - clubs, d - diamonds, h - hearts, s -spades
+    possible_values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    possible_colors = ["c", "d", "h", "s"]  # c - clubs, d - diamonds, h - hearts, s -spades
 
     def __init__(self, value, suit):
+        if value not in self.possible_values:
+            raise InvalidValue("Wrong card value")
         self.value = value
+
+        if suit not in self.possible_colors:
+            raise InvalidColor("Wrong card color")
         self.suit = suit
 
     def __str__(self):

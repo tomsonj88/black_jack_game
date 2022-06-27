@@ -1,6 +1,8 @@
 """
 BLACK JACK GAME
 PYCAMP
+
+# Todo: Add features: 1 - tokens, 2 - player name choosing at the game beginning
 """
 from game import Game
 
