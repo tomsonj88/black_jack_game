@@ -21,11 +21,11 @@ def test_wrong_value_card():
     """ Test when invalid value was chosen and check if exception procedure will work"""
     with pytest.raises(InvalidValue) as message:
         Card("1", "s")
-        assert message == "Wrong card value"
+    assert "Wrong card value" in str(message.value)
 
 
 def test_wrong_color_card():
     """ Test when invalid color was chosen and check if exception procedure will work"""
     with pytest.raises(InvalidColor) as message:
         Card("A", "b")
-        assert message == "Wrong card color"
+    assert "Wrong card color" in str(message.value)
